@@ -1,0 +1,52 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Enviar correo de resumen de pedido",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://email-bot-r13b.onrender.com",
+      "description": "Servidor de envío de emails"
+    }
+  ],
+  "paths": {
+    "/send-email": {
+      "post": {
+        "summary": "Envía un resumen de pedido por email al cliente",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "cliente@email.com"
+                  },
+                  "pedido": {
+                    "type": "string",
+                    "example": "2 medialunas, 1 café - Total: $1500"
+                  }
+                },
+                "required": ["email", "pedido"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Correo enviado correctamente"
+          },
+          "400": {
+            "description": "Faltan campos requeridos"
+          },
+          "500": {
+            "description": "Error en el servidor al enviar el correo"
+          }
+        }
+      }
+    }
+  }
+}
