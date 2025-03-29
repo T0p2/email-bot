@@ -16,6 +16,8 @@ def send_email():
 
     email = data.get("email")
     carrito = data.get("carrito_productos")
+    '''if isinstance(carrito, list):
+        carrito = "\n".join(carrito)'''
     costo = data.get("costo_envio")
     total = data.get("total_pedido")
     nombre = data.get("nombre_cliente_completo")
